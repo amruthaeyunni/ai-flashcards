@@ -50,12 +50,11 @@ export async function POST(req) {
         })
         console.log('Completion Response:', completion.choices[0].message.content);
 
-        // Extract the JSON part from the response
         const rawContent = completion.choices[0].message.content;
         const jsonStart = rawContent.indexOf('{');
-        const jsonString = rawContent.substring(jsonStart).trim();
+        const jsonEnd = rawContent.lastIndexOf('}') + 1;
+        const jsonString = rawContent.substring(jsonStart, jsonEnd).trim();
 
-        // Parse the cleaned JSON string
         const flashcards = JSON.parse(jsonString);
         //const flashcards = JSON.parse(completion.choices[0].message.content)
     
