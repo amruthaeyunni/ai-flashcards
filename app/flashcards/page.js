@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { collection, doc, getDoc, setDoc, getDocs} from "firebase/firestore"
 import { db } from "@/firebase"
 import { useRouter } from "next/navigation"
-import { Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material"
+import { Card, CardActionArea, CardContent, Container, Grid, Typography, Button, Box} from "@mui/material"
 
 export default function Flashcards() {
     //const {isLoaded, isSignedIn, user} = useUser()
@@ -63,6 +63,11 @@ export default function Flashcards() {
 
     return (
       <Container maxWidth="100vw">
+        <Box sx={{textAlign: 'center', my: 4,}}>
+          <Typography variant="h3" textAlign="center" sx={{mt: 5}}>
+              Your Flashcard Sets
+           </Typography>
+          </Box>
         <Grid container spacing={3} sx={{mt: 4}}>
           {flashcards.map((flashcard, index) => (
             <Grid item sx={12} sm={6} md={4} key={index}>
@@ -76,6 +81,24 @@ export default function Flashcards() {
             </Grid>
           ))}
         </Grid>
+        <Box sx={{textAlign: 'center', my: 4}}>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            sx={{mt: 2, mr: 10, p: 2}} 
+            onClick={() => (router.push('/generate'))}
+          >
+            New
+          </Button>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            sx={{mt: 2, p: 2}} 
+            onClick={() => (router.push('/'))}
+          >
+            Home
+          </Button>
+        </Box>
       </Container>
     )
 }
