@@ -1,5 +1,4 @@
 ## AI Flashcards
-![alt text](images/Flashcards-Landing-Page.png)
 This project is an AI flashcards application that generates 10 flashcards based on the topic the user requests for. It allows for multiple flashcard sets to be made. This can be used as a study/revision tool. The project uses Next.js as the frontend framework, Material UI for the UI components, Firebase as the backend service and OpenRouter API for intelligently generating flashcards. 
 
 ## Features
