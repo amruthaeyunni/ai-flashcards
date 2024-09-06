@@ -52,7 +52,15 @@ export default function Flashcard() {
             <Button 
               variant="contained" 
               color="primary" 
-              sx={{mt: 2, mr: 10, p: 2}} 
+              sx={{mt: 2, p: 2, mr: 10}} 
+              onClick={() => (router.push('/flashcards'))}
+            >
+              Back
+            </Button>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              sx={{mt: 2, p: 2, mr: 10}} 
               onClick={() => (router.push('/generate'))}
             >
               New
@@ -61,9 +69,9 @@ export default function Flashcard() {
               variant="contained" 
               color="primary" 
               sx={{mt: 2, p: 2}} 
-              onClick={() => (router.push('/flashcards'))}
+              onClick={() => (router.push('/'))}
             >
-              Back
+              Home
             </Button>
           </Box>
           <Grid container spacing={3} sx={{mt: 4}}>
@@ -98,6 +106,10 @@ export default function Flashcard() {
                             },
                             '& > div > div:nth-of-type(2)': {
                               transform: 'rotateY(180deg)',
+                              //backgroundColor: '#F0FFFF',
+                            },
+                            '& > div > div:first-of-type': {
+                              backgroundColor: '#87CEEB', // Front card color
                             },
                           }}>
                           <div>

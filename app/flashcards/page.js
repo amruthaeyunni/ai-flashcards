@@ -65,13 +65,16 @@ export default function Flashcards() {
       <Container maxWidth="100vw">
         <Box sx={{textAlign: 'center', my: 4,}}>
           <Typography variant="h3" textAlign="center" sx={{mt: 5}}>
-              Your Flashcard Sets
+              Your Flashcard Collections
+          </Typography>
+           <Typography variant="h6" textAlign="center" sx={{mt: 3}}>
+              Click on any of these collections to view each flashcard.
            </Typography>
           </Box>
         <Grid container spacing={3} sx={{mt: 4}}>
           {flashcards.map((flashcard, index) => (
             <Grid item sx={12} sm={6} md={4} key={index}>
-              <Card>
+              <Card sx={{backgroundColor: '#87CEEB'}}>
                 <CardActionArea onClick={() => {handleCardClick(flashcard.id)}}>
                   <CardContent>
                     <Typography variant="h6">{flashcard.name}</Typography>

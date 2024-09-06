@@ -75,8 +75,29 @@ export default function Generate() {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h4">Generate Flashcards</Typography>
-          <Paper sx={{p: 4, width: "100%"}}>
+          <Box sx={{textAlign: 'center'}}>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              sx={{mb: 2, p: 2, mr: 7}} 
+              onClick={() => (router.push('/flashcards'))}
+            >
+              Collections
+            </Button>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              sx={{mb: 2, p: 2}} 
+              onClick={() => (router.push('/'))}
+            >
+              Home
+            </Button>
+          </Box>
+          <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>Generate Flashcards</Typography>
+          <Typography variant="h6" gutterBottom sx={{ mb: 4 }}>Enter a theme or detailed description to create 10 custom flashcards. 
+            They do take around 10 seconds to generate so don't worry if you cannot see anything 
+            on the page immediately!</Typography>
+          <Paper sx={{ p: 4, width: "100%"}}>
             <TextField 
               value={text}
               onChange={(e) => setText(e.target.value)}
@@ -87,7 +108,6 @@ export default function Generate() {
               variant="outlined"
               sx={{
                 mb: 2,
-
               }}
               />
               <Button 
@@ -102,12 +122,12 @@ export default function Generate() {
         </Box>
 
         {flashcards.length > 0 && (
-            <Box sx={{mt: 4, }}>
-              <Typography variant="h5">Flascards Preview</Typography>
-              <Grid container spacing={3}>
+            <Box sx={{mt: 4,}}>
+              <Typography variant="h5" gutterBottom textAlign="center" sx={{ mb: 4 }}>Flashcards Preview</Typography>
+              <Grid container columnSpacing={30} rowSpacing={4} sx={{ transform: 'translateX(-60px)' }}>
                 {flashcards.map((flashcard, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
-                        <Card>
+                        <Card sx={{width: 340}}>
                           <CardActionArea onClick={() => {
                             handleCardClick(index)
                           }}>
@@ -119,7 +139,7 @@ export default function Generate() {
                                   transformStyle: 'preserve-3d',
                                   position: 'relative',
                                   width: '100%',
-                                  height: '200px',
+                                  height: '300px',
                                   boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
                                   transform: flipped[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
                                 },
@@ -136,6 +156,10 @@ export default function Generate() {
                                 },
                                 '& > div > div:nth-of-type(2)': {
                                   transform: 'rotateY(180deg)',
+                                  //backgroundColor: '#F0FFFF',
+                                },
+                                '& > div > div:first-of-type': {
+                                  backgroundColor: '#87CEEB', // Front card color
                                 },
                               }}>
                               <div>
@@ -158,7 +182,7 @@ export default function Generate() {
                 ))}
               </Grid>
               <Box sx={{mt: 4, display: 'flex', justifyContent: 'center'}}>
-                <Button variant="contained" color='secondary' onClick={handleOpen}>
+                <Button variant="contained" color='primary' onClick={handleOpen}>
                     Save
                 </Button>
               </Box>
